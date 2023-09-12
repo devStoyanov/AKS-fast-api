@@ -50,7 +50,7 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           resource-group: python-api-rg
-          cluster-name: contoso-video
+          cluster-name: aks-python-api
 
       - name: Run Helm Deploy
         run: |
