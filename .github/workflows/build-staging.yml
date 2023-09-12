@@ -41,7 +41,7 @@ jobs:
            version: v3.3.1
 
        - name: Get AKS Credentials
-         uses: Azure/aks-set-context@v3
+         uses: Azure/aks-set-context@v1
          with:
            creds: ${{ secrets.AZURE_CREDENTIALS }}
            resource-group: python-api-rg
