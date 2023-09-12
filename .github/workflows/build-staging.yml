@@ -6,7 +6,7 @@ on:
 
 jobs:
   build_push_image:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - uses: actions/checkout@v2
@@ -27,3 +27,35 @@ jobs:
           context: .
           push: true
           tags: ${{secrets.ACR_NAME}}/contoso-website:latest
+          
+  deploy:
+    runs-on: ubuntu-20.04
+    needs: build_push_image # Will wait for the execution of the previous job
+
+    steps:
+       - uses: actions/checkout@v2
+
+       - name: Helm tool installer
+         uses: Azure/setup-helm@v3
+         with: 
+           version: v3.3.1
+
+       - name: Get AKS Credentials
+         uses: Azure/aks-set-context@v3
+         with:
+           creds: ${{ secrets.AZURE_CREDENTIALS }}
+           resource-group: python-api-rg
+           cluster-name: aks-python-api
+       - name: Run Heml Deploy
+         run: |
+           helm upgrade \
+            --install \
+            --create-namespace \
+            --atomic \
+            --wait \
+            --namespace staging \
+            fast-api \
+            ./kubernetes/fast-api \
+            --set image.repository=${{ secrets.ACR_NAME }} \
+            --set dns.name=${{ secrets.DNS_NAME }}
+         
