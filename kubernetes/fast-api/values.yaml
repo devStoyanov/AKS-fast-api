@@ -1,10 +1,9 @@
 image:
-  registry: k8scontainerregistry21064
-  name: fast-api
-  tag: latest
-
+  registry: registry-placeholder
+  name: name-placeholder
+  tag: tag-placeholder
 dns:
-  name: 5fcfcc5f1faa45958ad5.northeurope.aksapp.io
+  name: dns-placeholder
 
 db:
- URL: postgresql://stoyanov:tt036122758!@dbazure.postgres.database.azure.com:5432/fastapi
+ URL: url-placeholder
