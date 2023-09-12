@@ -56,8 +56,8 @@ jobs:
             --namespace staging \
             fast-api \
             ./kubernetes/fast-api \
-            --set image.repository=${{ secrets.ACR_NAME }} \
-            --set image.registry=${{ secrets.ACR_REG }} \
+            --set image.repository=${{secrets.ACR_NAME}} \
+            --set image.registry=${{secrets.ACR_REG}} \
             --set image.name=${{secrets.IMAGE}} \ 
             --set db.URL=${{secrets.DB_URL}} \
             --set dns.name=${{ secrets.DNS_NAME }}
