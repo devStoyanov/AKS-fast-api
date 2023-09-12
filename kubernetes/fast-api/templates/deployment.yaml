@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: fast-api
-  namespace: {{default "staging" .Release.Namespace }}
+  namespace: {{ default "staging" .Release.Namespace }}
 spec:
   selector: # Define the wrapping strategy
     matchLabels: # Match all pods with the defined labels

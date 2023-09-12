@@ -1,5 +1,5 @@
 image:
-  registry: k8scontainerregistry21064.azurecr.io
+  registry: k8scontainerregistry21064
   name: fast-api
   tag: latest
 
