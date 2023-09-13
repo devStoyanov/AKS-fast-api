@@ -42,7 +42,9 @@ def delete_item_db(id: int, db: Session = Depends(get_db), current_user: int=(De
     item = crud.delete_item(db, item_id=id, user_id=current_user.id)
     if item  == None:
         raise HTTPException(status_code=status.HTTP_200_OK, detail="Deleted")
-    
-    
+
+@app.get("/users/")
+def get_users(db: Session, skip: int = 0, limit: int = 100):
+    return db.query(models.User).offset(skip).limit(limit).all()
 
 
