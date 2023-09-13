@@ -2,8 +2,12 @@ image:
   registry: k8scontainerregistry21064
   name: fast-api
   tag: latest
+
 dns:
   name: dns-placeholder
 
 db:
  URL: url-placeholder
+
+secret:
+ key: key-placeholder

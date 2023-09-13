@@ -29,4 +29,5 @@ spec:
           env:
           - name: DATABASE_URL
             value: {{ .Values.db.URL }}
-  
+          - name: SECRET_KEY
+            value: {{ .Values.secret.key }} 
