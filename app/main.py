@@ -59,3 +59,8 @@ def delete_item_db(
     item = crud.delete_item(db, item_id=id, user_id=current_user.id)
     if item == None:
         raise HTTPException(status_code=status.HTTP_200_OK, detail="Deleted")
+
+
+@app.delete("/machine/")
+def delete_vm():
+    return {"message": "done"}
