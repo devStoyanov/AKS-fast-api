@@ -1,9 +1,9 @@
 image:
-  registry: placeholder
+  registry: k8scontainerregistry21064
   name: fast-api
   tag: latest
 dns:
-  name: placeholder
+  name: 5fcfcc5f1faa45958ad5.northeurope.aksapp.io
 
 db:
  URL: url-placeholder
