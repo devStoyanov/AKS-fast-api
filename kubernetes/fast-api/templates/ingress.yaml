@@ -1,4 +1,3 @@
-#ingress.yaml
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -11,10 +10,10 @@ spec:
     - host: aksapi-{{ default "staging" .Release.Namespace }}.{{ .Values.dns.name }}
       http:
         paths:
-          - backend: # How the ingress will handle the requests
+          - backend:
               service:
-               name: fast-api # Which service the request will be forwarded to
+               name: fast-api
                port:
-                 name: http # Which port in that service
-            path: / # Which path is this rule referring to
-            pathType: Prefix # See more at https://kubernetes.io/docs/concepts/services-networking/ingress/#path-types
+                 name: http
+            path: /
+            pathType: Prefix

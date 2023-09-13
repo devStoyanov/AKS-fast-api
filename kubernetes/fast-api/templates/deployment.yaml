@@ -4,10 +4,10 @@ metadata:
   name: fast-api
   namespace: {{ default "staging" .Release.Namespace }}
 spec:
-  selector: # Define the wrapping strategy
-    matchLabels: # Match all pods with the defined labels
-      app: fast-api # Labels follow the `name: value` template
-  template: # This is the template of the pod inside the deployment
+  selector:
+    matchLabels:
+      app: fast-api
+  template:
     metadata:
       labels:
         app: fast-api

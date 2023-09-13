@@ -8,7 +8,7 @@ spec:
   selector:
     app: fast-api
   ports:
-    - port: 80 # SERVICE exposed port
-      name: http # SERVICE port name
-      protocol: TCP # The protocol the SERVICE will listen to
-      targetPort: http # Port to forward to in the POD
+    - port: 80
+      name: http
+      protocol: TCP
+      targetPort: http

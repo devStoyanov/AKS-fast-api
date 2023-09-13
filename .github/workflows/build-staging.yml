@@ -30,8 +30,7 @@ jobs:
           
   deploy:
     runs-on: ubuntu-20.04
-    needs: build_push_image # Will wait for the execution of the previous job
-
+    needs: build_push_image
     steps:
        - uses: actions/checkout@v2
 
@@ -58,7 +57,6 @@ jobs:
               ./kubernetes/fast-api \
               --set image.repository=${{ secrets.ACR_NAME }} \
               --set dns.name=${{ secrets.DNS_NAME }} \
-              --set image.registry=${{ secrets.ACR_REG }} \
               --set db.URL=${{ secrets.DB_URL}}
 
          
