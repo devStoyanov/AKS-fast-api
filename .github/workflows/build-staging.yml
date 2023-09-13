@@ -48,6 +48,11 @@ jobs:
            cluster-name: aks-python-api
        - name: Run Heml Deploy
          run: |
+            echo "ACR_NAME: ${{ secrets.ACR_NAME }}"
+            echo "ACR_REG: ${{ secrets.ACR_REG }}"
+            echo "IMAGE: ${{ secrets.IMAGE }}"
+            echo "DB_URL: ${{ secrets.DB_URL }}"
+            echo "DNS_NAME: ${{ secrets.DNS_NAME }}"
             helm upgrade \
               --install \
               --create-namespace \
