@@ -1,5 +1,5 @@
 image:
-  registry: registry-placeholder
+  registry: k8scontainerregistry21064
   name: fast-api
   tag: latest
 dns:
