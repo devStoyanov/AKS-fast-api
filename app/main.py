@@ -48,3 +48,7 @@ def delete_item_db(id: int, db: Session = Depends(get_db), current_user: int=(De
 @app.delete("/users/")
 def delete_user():
     return {"message": "working"}
+
+@app.put("/users/")
+def delete_user():
+    return {"message": "working"}
