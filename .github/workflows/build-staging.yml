@@ -26,7 +26,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{secrets.ACR_NAME}}/contoso-website:latest
+          tags: ${{secrets.ACR_NAME}}/fast-api:latest
           
   deploy:
     runs-on: ubuntu-20.04
