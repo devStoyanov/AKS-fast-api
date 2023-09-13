@@ -54,15 +54,15 @@ jobs:
 
       - name: Run Helm Deploy
         run: |
-          helm upgrade \
-            --install \
-            --create-namespace \
-            --atomic \
-            --wait \
-            --namespace production \
-            fast-api \
-            ./kubernetes/fast-api \
-            --set image.repository=${{ secrets.ACR_NAME }} \
-            --set db.URL= ${{DB_URL}} \
-            --set dns.name=${{ secrets.DNS_NAME }}
-    
+           helm upgrade \
+             --install \
+             --create-namespace \
+             --atomic \
+             --wait \
+             --namespace production \
+             fast-api \
+             ./kubernetes/fast-api \
+             --set image.repository=${{ secrets.ACR_NAME }} \
+             --set dns.name=${{ secrets.DNS_NAME }} \
+             --set db.URL= ${{ secrets.DB_URL }} 
+      
