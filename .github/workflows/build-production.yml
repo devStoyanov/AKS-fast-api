@@ -63,7 +63,6 @@ jobs:
             fast-api \
             ./kubernetes/fast-api \
             --set image.repository=${{ secrets.ACR_NAME }} \
-            --set image.registry=${{ secrets.ACR_REG }} \
             --set db.URL= ${{DB_URL}} \
             --set dns.name=${{ secrets.DNS_NAME }}
     
