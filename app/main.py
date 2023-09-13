@@ -56,3 +56,7 @@ def update_user():
 @app.delete("/animals/")
 def delete_animals():
     return {"message": "working"}
+
+@app.get("/cars/")
+def get_animals():
+    return {"message": "working"}
