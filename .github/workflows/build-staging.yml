@@ -48,17 +48,18 @@ jobs:
            cluster-name: aks-python-api
        - name: Run Heml Deploy
          run: |
-           helm upgrade \
-            --install \
-            --create-namespace \
-            --atomic \
-            --wait \
-            --namespace staging \
-            fast-api \
-            ./kubernetes/fast-api \
-            --set image.repository=${{ secrets.ACR_NAME }} \
-            --set image.registry=${{ secrets.ACR_REG }} \
-            --set image.name=${{ secrets.IMAGE }} \
-            --set db.URL=${{ secrets.DB_URL }} \
-            --set dns.name=${{ secrets.DNS_NAME }}
+            helm upgrade \
+              --install \
+              --create-namespace \
+              --atomic \
+              --wait \
+              --namespace staging \
+              fast-api \
+              ./kubernetes/fast-api \
+              --set image.repository=${{ secrets.ACR_NAME }} \
+              --set image.registry=${{ secrets.ACR_REG }} \
+              --set image.name=${{ secrets.IMAGE }} \
+              --set db.URL=${{ secrets.DB_URL }} \
+              --set dns.name=${{ secrets.DNS_NAME }}
+
          
