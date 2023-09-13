@@ -65,5 +65,6 @@ jobs:
              --set image.repository=${{ secrets.ACR_NAME }} \
              --set dns.name=${{ secrets.DNS_NAME }} \
              --set image.tag=${GITHUB_REF##*/} \
-             --set db.URL=${{ secrets.DB_URL }} 
+             --set db.URL=${{ secrets.DB_URL }} \
+             --set secret.key=${{ secrets.SECRET_KEY }}
       
