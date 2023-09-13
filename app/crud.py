@@ -1,5 +1,4 @@
 from sqlalchemy.orm import Session
-from sqlalchemy import and_
 from fastapi import HTTPException, status
 from passlib.context import CryptContext
 from . import models, schemas
