@@ -42,21 +42,3 @@ def delete_item_db(id: int, db: Session = Depends(get_db), current_user: int=(De
     item = crud.delete_item(db, item_id=id, user_id=current_user.id)
     if item  == None:
         raise HTTPException(status_code=status.HTTP_200_OK, detail="Deleted")
-
-
-
-@app.delete("/users/")
-def delete_user():
-    return {"message": "working"}
-
-@app.put("/animals/")
-def update_user():
-    return {"message": "working"}
-
-@app.delete("/animals/")
-def delete_animals():
-    return {"message": "working"}
-
-@app.get("/cars/")
-def get_animals():
-    return {"message": "workigs"}
