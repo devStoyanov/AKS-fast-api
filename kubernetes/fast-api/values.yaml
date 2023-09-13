@@ -1,7 +1,7 @@
 image:
   registry: registry-placeholder
   name: name-placeholder
-  tag: tag-placeholder
+  tag: latest
 dns:
   name: dns-placeholder
 
