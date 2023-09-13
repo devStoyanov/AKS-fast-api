@@ -1,6 +1,6 @@
 image:
   registry: registry-placeholder
-  name: name-placeholder
+  name: fast-api
   tag: latest
 dns:
   name: 5fcfcc5f1faa45958ad5.northeurope.aksapp.io
