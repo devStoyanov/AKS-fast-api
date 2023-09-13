@@ -59,4 +59,4 @@ def delete_animals():
 
 @app.get("/cars/")
 def get_animals():
-    return {"message": "workig"}
+    return {"message": "workigs"}
