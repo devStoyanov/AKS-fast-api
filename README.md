@@ -87,7 +87,7 @@ Before you begin, ensure you have met the following requirements:
     Enable admin login
         az acr update -n your_acr_name --admin-enabled true
     You can read more about Admin Account in the link bellow 
-    
+
     https://learn.microsoft.com/en-us/azure/container-registry/container-registry-authentication?tabs=azure-cli#admin-account
 
   * Azure Kubernetes Service (AKS):
@@ -101,29 +101,32 @@ Before you begin, ensure you have met the following requirements:
           --generate-ssh-keys \
           --node-vm-size Standard_B2s
 
-   * Link your Kubernetes cluster with kubectl by running the following command in shell. 
+   * Link your Kubernetes cluster with kubectl by running the following command in shell:
+
         az aks get-credentials --name your_cluster_name --resource-group your_resource_group
     
-   * Attach an ACR to AKS cluster 
+   * Attach an ACR to AKS cluster:
+
         az aks update \
           --name your_aks_name \
           --resource-group $RESOURCE_GROUP_NAME \
           --attach-acr your_acr_name
 
    * More information you can check link bellow 
+
         https://learn.microsoft.com/en-us/azure/aks/cluster-container-registry-integration?tabs=azure-cli#attach-an-acr-to-an-existing-aks-cluster
 
 
   # Configuration
 
-    Add these secrets
-   * ACR_NAME
+  Add these secrets
+   * ACR_NAME:
         az acr list --query "[?contains(resourceGroup, 'resource_group_name')].loginServer" -o table
-   * ACR_LOGIN
+   * ACR_LOGIN:
         az acr credential show --name acr_name --query "username" -o table
-   * ACR_PASSWORD
+   * ACR_PASSWORD:
         az acr credential show --name acr_name --query "passwords[0].value" -o table
-   * DNS_NAME
+   * DNS_NAME:
         az aks show -g {resource-group-name} -n {aks-cluster-name} -o tsv --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName
 
   * PostgreSQL secrets
@@ -137,24 +140,26 @@ Before you begin, ensure you have met the following requirements:
 
   * Create RBAC with Contributor role
   In order to allow kubectl  in GitHub Actions to perform certain actions on AKS cluster in Azure you should set up RBAC role and bindings with the appropriate permissions.
-  By setting up RBAC properly, you can control what actions your GitHub Actions workflow can perform on your AKS cluster.
+  By setting up RBAC properly, you can control what actions your GitHub Actions workflow can perform on your AKS cluster:
+
         az ad sp create-for-rbac --role Contributor --scopes /subscriptions/<SUBSCRIPTION-ID> --sdk-auth
+
   Copy the output and paste it in the secret value named AZURE_CREDENTIALS. Then, save the secret and close the tab.
   
   # Deployment Pipelines
-    In our deployment process, we have two primary environments: staging and production 
+  In our deployment process, we have two primary environments: staging and production 
 
-    * Staging Deployment 
+  * Staging Deployment 
 
     Push without Git Tag: When code changes are pushed to the repository without creating a Git tag (git push origin main or similar), our deployment pipeline automatically builds a Docker image with the latest tag. This image is then pushed to the namespace in the staging cluster, ensuring that our staging environment is separated from our production.This approach allows development and testing teams to work with the most up-to-date version for validation.
 
-    * Production Deployment 
-
+  * Production Deployment 
+  
     Push with Git Tag: When you create a Git tag using the git tag -a command and push it (git push origin <tag>), our deployment pipeline reacts differently. It not only builds an image with the specified Git tag but also builds an additional image with the latest tag. Both of these images are then pushed to their respective namespaces: the image with the Git tag goes to the production namespace in our AKS (Azure Kubernetes Service) cluster, ensuring a specific version of the application is deployed in production. The image with the latest tag is also pushed to the staging namespace. This approach enables both teams to work with latest version of the application.
     This separation of staging and production environments, coupled with the ability to control which versions are deployed in production
 
-    * Configure production and staging worklofws 
-      In both build-production.yml and build-staging.yml under Get AKS Credentials step change the cluster-name and resource-group to your specific ones
+  * Configure production and staging worklofws 
+    In both build-production.yml and build-staging.yml under Get AKS Credentials step change the cluster-name and resource-group to your specific ones
       
 
   # Documentation
