@@ -90,8 +90,7 @@ Before you begin, ensure you have met the following requirements:
 
     https://learn.microsoft.com/en-us/azure/container-registry/container-registry-authentication?tabs=azure-cli#admin-account
 
-  * Azure Kubernetes Service (AKS):
-
+  * Azure Kubernetes Service (AKS): 
         az aks create \
           --resource-group your_resource_group \
           --name your_cluster_name \
@@ -101,46 +100,42 @@ Before you begin, ensure you have met the following requirements:
           --generate-ssh-keys \
           --node-vm-size Standard_B2s
 
-  * Link your Kubernetes cluster with kubectl by running the following command in shell:
-
+  * Link your Kubernetes cluster with kubectl by running the following command in shell: 
         az aks get-credentials --name your_cluster_name --resource-group your_resource_group
     
-  * Attach an ACR to AKS cluster:
-
+  * Attach an ACR to AKS cluster: 
         az aks update \
           --name your_aks_name \
           --resource-group $RESOURCE_GROUP_NAME \
           --attach-acr your_acr_name
 
    * More information you can check link bellow 
-
         https://learn.microsoft.com/en-us/azure/aks/cluster-container-registry-integration?tabs=azure-cli#attach-an-acr-to-an-existing-aks-cluster
 
 
   # Configuration
 
   Add these secrets
-  
-  * ACR_NAME:
 
+  * ACR_NAME:
         az acr list --query "[?contains(resourceGroup, 'resource_group_name')].loginServer" -o table
 
   * ACR_LOGIN:
-
         az acr credential show --name acr_name --query "username" -o table
 
   * ACR_PASSWORD:
-
         az acr credential show --name acr_name --query "passwords[0].value" -o table
 
   * DNS_NAME:
-
         az aks show -g {resource-group-name} -n {aks-cluster-name} -o tsv --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName
 
   * PostgreSQL secrets
-    Application is congifured to use current format to connect to database
+    Application is congifured to use current format to connect to database:
+
         DATABASE_URL=postgresql://username:password@host:5432/database
-    In oreder to use this format create a secret with name for example DB_URL and place postgresql://username:password@host:5432/database with your specific connection settings
+
+    In oreder to use this format create a secret with name for example DB_URL and place: 
+    postgresql://username:password@host:5432/database with your specific connection settings
   
 
   * Configure Heml values.yaml
