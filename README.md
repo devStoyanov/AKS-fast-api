@@ -91,6 +91,7 @@ Before you begin, ensure you have met the following requirements:
     https://learn.microsoft.com/en-us/azure/container-registry/container-registry-authentication?tabs=azure-cli#admin-account
 
   * Azure Kubernetes Service (AKS): 
+
         az aks create \
           --resource-group your_resource_group \
           --name your_cluster_name \
@@ -101,6 +102,7 @@ Before you begin, ensure you have met the following requirements:
           --node-vm-size Standard_B2s
 
   * Link your Kubernetes cluster with kubectl by running the following command in shell: 
+  
         az aks get-credentials --name your_cluster_name --resource-group your_resource_group
     
   * Attach an ACR to AKS cluster: 
@@ -132,7 +134,7 @@ Before you begin, ensure you have met the following requirements:
         az acr credential show --name acr_name --query "passwords[0].value" -o table
 
   * DNS_NAME: 
-  
+
         az aks show -g {resource-group-name} -n {aks-cluster-name} -o tsv --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName
 
   * PostgreSQL secrets
