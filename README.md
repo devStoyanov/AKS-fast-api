@@ -42,46 +42,56 @@ Before you begin, ensure you have met the following requirements:
   # Installation
 
   * You need active azure subscription with neccessary resources in order to deploy the project, you can check more information on the link bellow 
+
     https://azure.microsoft.com/en-us
   
   * First you need to install git, you can follow the link for information on installation process depending on you operating system 
+
     https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
   * Docker installation:
     If you are considering to make a changes to the project and the image you need Docker locally in order to build and test the image. 
     You can follow the link for more information on installation process
     depending on your operating system 
+
     https://docs.docker.com/get-docker/
 
   * Azure CLI
     You can follow the link for information on installation process 
     depending on your operating system 
+
     https://learn.microsoft.com/en-us/cli/azure/install-azure-cli
 
   * Kubectl 
     Allows you to run commands against Kubernetes cluster like deploy applications, inspect and manage cluster resources, and view logs
     Follow the link for more information on installation process depending on your operating system 
+
     https://kubernetes.io/docs/tasks/tools/
   
   * Helm
     Helm is a package manager for Kubernetes that allows you to develope and operate  more easily package, configure, and deploy applications and services onto Kubernetes clusters.
     Follow the link for more information on installation process depending on your operating system 
+
     https://helm.sh/docs/intro/install/
   
   * Create PostgreSQL-flexible server
     You can check the link bellow which is step by step how to do it 
+
     https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/quickstart-create-server-portal
   
   * Azure Container Registry (ACR)
     You can check the link bellow for information about creating ACR and pushing a container image to it 
+
     https://learn.microsoft.com/en-us/azure/container-instances/container-instances-tutorial-prepare-acr
+
     Enable admin login
         az acr update -n your_acr_name --admin-enabled true
     You can read more about Admin Account in the link bellow 
+    
     https://learn.microsoft.com/en-us/azure/container-registry/container-registry-authentication?tabs=azure-cli#admin-account
 
-  * Azure Kubernetes Service (AKS) 
-    In order to create AKS run this command:
+  * Azure Kubernetes Service (AKS):
+
         az aks create \
           --resource-group your_resource_group \
           --name your_cluster_name \
