@@ -8,7 +8,7 @@ This project is a simple RESTful API service that provides endpoints for interac
 - [Getting Started](#getting-started)
   - [Installation](#installation)
   - [Configuration](#configuration)
-  - [Deployment Pipelines](#deployment-pipeline)
+  - [Deployment Pipelines](#deployment-pipelines)
 - [Documentation](#documentation)
 - [License](#license)
 
@@ -41,43 +41,43 @@ Before you begin, ensure you have met the following requirements:
   
   # Installation
 
-  * You need active azure subscription with neccessary resources in order to deploy the project, you can check more information on the link bellow
+  * You need active azure subscription with neccessary resources in order to deploy the project, you can check more information on the link bellow 
         https://azure.microsoft.com/en-us
   
-  * First you need to install git, you can follow the link for information on installation process depending on you operating system
+  * First you need to install git, you can follow the link for information on installation process depending on you operating system 
         https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
   * Docker installation:
     If you are considering to make a changes to the project and the image you need Docker locally in order to build and test the image. 
     You can follow the link for more information on installation process
-    depending on your operating system
+    depending on your operating system 
         https://docs.docker.com/get-docker/
 
   * Azure CLI
     You can follow the link for information on installation process 
-    depending on your operating system
+    depending on your operating system 
         https://learn.microsoft.com/en-us/cli/azure/install-azure-cli
 
   * Kubectl 
     Allows you to run commands against Kubernetes cluster like deploy applications, inspect and manage cluster resources, and view logs
-    Follow the link for more information on installation process depending on your operating system
+    Follow the link for more information on installation process depending on your operating system 
         https://kubernetes.io/docs/tasks/tools/
   
   * Helm
     Helm is a package manager for Kubernetes that allows you to develope and operate  more easily package, configure, and deploy applications and services onto Kubernetes clusters.
-    Follow the link for more information on installation process depending on your operating system
+    Follow the link for more information on installation process depending on your operating system 
         https://helm.sh/docs/intro/install/
   
   * Create PostgreSQL-flexible server
-    You can check the link bellow which is step by step how to do it
+    You can check the link bellow which is step by step how to do it 
         https://learn.microsoft.com/en-us/azure/postgresql/flexible-server/quickstart-create-server-portal
   
   * Azure Container Registry (ACR)
-    You can check the link bellow for information about creating ACR and pushing a container image to it
+    You can check the link bellow for information about creating ACR and pushing a container image to it 
         https://learn.microsoft.com/en-us/azure/container-instances/container-instances-tutorial-prepare-acr
     Enable admin login
-    az acr update -n your_acr_name --admin-enabled true
-    You can read more about Admin Account in the link bellow
+        az acr update -n your_acr_name --admin-enabled true
+    You can read more about Admin Account in the link bellow 
         https://learn.microsoft.com/en-us/azure/container-registry/container-registry-authentication?tabs=azure-cli#admin-account
 
   * Azure Kubernetes Service (AKS)
@@ -132,18 +132,18 @@ Before you begin, ensure you have met the following requirements:
   Copy the output and paste it in the secret value named AZURE_CREDENTIALS. Then, save the secret and close the tab.
   
   # Deployment Pipelines
-    In our deployment process, we have two primary environments: staging and production
+    In our deployment process, we have two primary environments: staging and production 
 
-    Staging Deployment
+    * Staging Deployment 
 
-    * Push without Git Tag: When code changes are pushed to the repository without creating a Git tag (git push origin main or similar), our deployment pipeline automatically builds a Docker image with the latest tag. This image is then pushed to the namespace in the staging cluster, ensuring that our staging environment is separated from our production.This approach allows development and testing teams to work with the most up-to-date version for validation.
+    Push without Git Tag: When code changes are pushed to the repository without creating a Git tag (git push origin main or similar), our deployment pipeline automatically builds a Docker image with the latest tag. This image is then pushed to the namespace in the staging cluster, ensuring that our staging environment is separated from our production.This approach allows development and testing teams to work with the most up-to-date version for validation.
 
-    Production Deployment
+    * Production Deployment 
 
-    * Push with Git Tag: When you create a Git tag using the git tag -a command and push it (git push origin <tag>), our deployment pipeline reacts differently. It not only builds an image with the specified Git tag but also builds an additional image with the latest tag. Both of these images are then pushed to their respective namespaces: the image with the Git tag goes to the production namespace in our AKS (Azure Kubernetes Service) cluster, ensuring a specific version of the application is deployed in production. The image with the latest tag is also pushed to the staging namespace. This approach enables both teams to work with latest version of the application.
+    Push with Git Tag: When you create a Git tag using the git tag -a command and push it (git push origin <tag>), our deployment pipeline reacts differently. It not only builds an image with the specified Git tag but also builds an additional image with the latest tag. Both of these images are then pushed to their respective namespaces: the image with the Git tag goes to the production namespace in our AKS (Azure Kubernetes Service) cluster, ensuring a specific version of the application is deployed in production. The image with the latest tag is also pushed to the staging namespace. This approach enables both teams to work with latest version of the application.
     This separation of staging and production environments, coupled with the ability to control which versions are deployed in production
 
-    * Configure production and staging worklofws
+    * Configure production and staging worklofws 
       In both build-production.yml and build-staging.yml under Get AKS Credentials step change the cluster-name and resource-group to your specific ones
       
 
