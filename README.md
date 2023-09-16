@@ -104,6 +104,7 @@ Before you begin, ensure you have met the following requirements:
         az aks get-credentials --name your_cluster_name --resource-group your_resource_group
     
   * Attach an ACR to AKS cluster: 
+  
         az aks update \
           --name your_aks_name \
           --resource-group $RESOURCE_GROUP_NAME \
@@ -117,16 +118,16 @@ Before you begin, ensure you have met the following requirements:
 
   Add these secrets
 
-  * ACR_NAME:
+  * ACR_NAME: 
         az acr list --query "[?contains(resourceGroup, 'resource_group_name')].loginServer" -o table
 
-  * ACR_LOGIN:
+  * ACR_LOGIN: 
         az acr credential show --name acr_name --query "username" -o table
 
-  * ACR_PASSWORD:
+  * ACR_PASSWORD: 
         az acr credential show --name acr_name --query "passwords[0].value" -o table
 
-  * DNS_NAME:
+  * DNS_NAME: 
         az aks show -g {resource-group-name} -n {aks-cluster-name} -o tsv --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName
 
   * PostgreSQL secrets
