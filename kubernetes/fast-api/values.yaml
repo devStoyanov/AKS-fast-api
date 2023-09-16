@@ -1,6 +1,9 @@
 image:
+  # your acr registry name
   registry: k8scontainerregistry21064
+  # your image name
   name: fast-api
+  # default image tag
   tag: latest
 
 dns:
