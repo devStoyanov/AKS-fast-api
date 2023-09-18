@@ -102,7 +102,7 @@ Before you begin, ensure you have met the following requirements:
           --node-vm-size Standard_B2s
 
   * Link your Kubernetes cluster with kubectl by running the following command in shell: 
-  
+
         az aks get-credentials --name your_cluster_name --resource-group your_resource_group
     
   * Attach an ACR to AKS cluster: 
@@ -136,13 +136,17 @@ Before you begin, ensure you have met the following requirements:
   * DNS_NAME: 
 
         az aks show -g {resource-group-name} -n {aks-cluster-name} -o tsv --query addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName
+  
+  * SECRET_KEY:
+         
+        create a secret_key you can use "secrets.token_hex" for example to generate the key.
 
   * PostgreSQL secrets
     Application is congifured to use current format to connect to database:
 
         DATABASE_URL=postgresql://username:password@host:5432/database
 
-    In oreder to use this format create a secret with name for example DB_URL and place: 
+    In order to use this format create a secret with name for example DB_URL and place: 
     postgresql://username:password@host:5432/database with your specific connection settings
   
 
